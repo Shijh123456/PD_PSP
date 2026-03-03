@@ -58,11 +58,6 @@ def f8():
     pl.plot_states_network_glass(k=num_states, darkstyle=False, save_path=f"{analysis_dir}/8.states_network_glass.png")
     
 def f9():
-    pl.plot_state_dwell_occupy(k=num_states,darkstyle=False,save_path=f"{analysis_dir}/9.dwell_occupy_1.png",psp_jia=True,abnormal_state=abnormal_state)
+    pl.plot_state_dwell_occupy(k=num_states,darkstyle=False,save_path=f"{analysis_dir}/9.dwell_occupy_1.png")
     
-
-#f1('sub-013')
-f2()
-f4()
-#f6()
 
