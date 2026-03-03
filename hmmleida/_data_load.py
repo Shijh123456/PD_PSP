@@ -1370,7 +1370,7 @@ class DataLoad:
         else:
             return g
 
-    def plot_state_dwell_occupy(self,k=2,darkstyle=False,save_path=None,psp_jia=None,abnormal_state=1):
+    def plot_state_dwell_occupy(self,k=2,darkstyle=False,save_path=None):
         _check_k_input(self._K_min_, self._K_max_, k)
 
         df_occ, df_dt = pd.DataFrame(), pd.DataFrame()
@@ -1378,9 +1378,6 @@ class DataLoad:
             occ = self.occupancies(k=k)[['condition', f'PL_state_{state}']]
             dt = self.dwell_times(k=k)[['condition', f'PL_state_{state}']]
             occ.rename(columns={f'PL_state_{state}': 'Occupancy'}, inplace=True)
-            if psp_jia:
-                if state == abnormal_state:
-                    occ['Occupancy'][153:181] = occ['Occupancy'][153:181] + 0.005
             dt.rename(columns={f'PL_state_{state}': 'Dwell time'}, inplace=True)
             occ['state'] = state
             dt['state'] = state
