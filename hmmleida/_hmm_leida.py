@@ -149,6 +149,7 @@ class hmmLeida:
             concatenated_dataset,
             K_min=self._K_min_,
             K_max=self._K_max_,
+            n_init=20,
             random_state=random_state,
             save_results=save_results,
             path=self._results_path_ if save_results else None
