@@ -982,7 +982,7 @@ def _big_delta_fast(ci, distances):
     return np.max(values)
 
 
-def hmm_analysis(concatenated_dataset,K_min=2,K_max=20,n_init=15,random_state=None,plot=True,save_results=False,path=None):
+def hmm_analysis(concatenated_dataset,K_min=2,K_max=20,n_init=20,random_state=None,plot=True,save_results=False,path=None):
     if save_results:
         try:
             results_path = f'{path}/clustering'
@@ -1003,7 +1003,7 @@ def hmm_analysis(concatenated_dataset,K_min=2,K_max=20,n_init=15,random_state=No
 
     for k in range(K_min, K_max + 1):
         print(f'k = {k}')
-        model = hmm.GaussianHMM(n_components=k, covariance_type='diag')
+        model = hmm.GaussianHMM(n_components=k, covariance_type='diag', n_iter=1000, tol=1e-6, random_state=seed)
         model.fit(X)
         models[f'k_{k}'] = model
         _, state_sequences = model.decode(X)
